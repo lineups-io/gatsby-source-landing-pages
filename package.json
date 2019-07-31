@@ -1,0 +1,17 @@
+{
+  "name": "gatsby-source-landing-pages",
+  "version": "0.1.0",
+  "main": "gatsby-node.js",
+  "author": "lablancas@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link-context": "^1.0.18",
+    "apollo-link-http": "^1.5.15",
+    "gatsby-node-helpers": "^0.3.0",
+    "gatsby-source-filesystem": "^2.1.6",
+    "graphql-tag": "^2.10.1",
+    "node-fetch": "^2.6.0"
+  }
+}
