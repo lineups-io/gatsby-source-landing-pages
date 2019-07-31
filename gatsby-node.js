@@ -19,7 +19,7 @@ exports.sourceNodes = ({ actions, store, cache, createNodeId }, { uri, key, acco
   const variables = { account }
 
   return client.query({ query, variables }).then(({ data }) => {
-    console.log(' [gatsby-source-data] creating site node', 1)
+    console.log('[gatsby-source-landing-pages] creating site node', 1)
     createNode(SiteNode(data.site))
 
     const createMarkdownNodes = ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer'].reduce(
@@ -37,7 +37,7 @@ exports.sourceNodes = ({ actions, store, cache, createNodeId }, { uri, key, acco
         : Promise.resolve()
     }), Promise.resolve())
 
-    console.log(' [gatsby-source-data] creating market nodes', data.markets.count)
+    console.log('[gatsby-source-landing-pages] creating market nodes', data.markets.count)
     const createMarkets = data.markets.items.reduce(
       (acc, market) => acc.then(() => {
         const marketNode = MarketNode(market)
@@ -48,7 +48,7 @@ exports.sourceNodes = ({ actions, store, cache, createNodeId }, { uri, key, acco
       Promise.resolve()
     )
 
-    console.log(' [gatsby-source-data] creating apartment nodes', data.apartments.count)
+    console.log('[gatsby-source-landing-pages] creating apartment nodes', data.apartments.count)
     const createApartments = data.apartments.items.reduce(
       (acc, apartment) => acc.then(() => {
         const apartmentNode = ApartmentNode(apartment)
@@ -62,14 +62,14 @@ exports.sourceNodes = ({ actions, store, cache, createNodeId }, { uri, key, acco
           apartmentNode.defaultPhoto.localFile___NODE = fileNode.id
           return createNode(apartmentNode)
         }).catch(e => {
-          console.error(' [gatsby-source-data] create remote file node', e)
+          console.error('[gatsby-source-landing-pages] create remote file node', e)
           return createNode(apartmentNode)
         })
       }),
       createMarkets
     )
 
-    console.log(' [gatsby-source-data] creating page nodes', data.pages.count)
+    console.log('[gatsby-source-landing-pages] creating page nodes', data.pages.count)
     return data.pages.items.reduce(
       (acc, page) => acc.then(() => {
         const pageNode = PageNode(page)
