@@ -1,7 +1,7 @@
 const gql = require('graphql-tag')
 
-module.exports = gql`
-  query sourceNodes($account:ID) {
+exports.getSiteInfo = gql`
+  query getSiteInfoFromGatsbyPlugin ($account: ID!) {
     site: getAccountById(id: $account) {
       id: publicId
       name
@@ -21,7 +21,12 @@ module.exports = gql`
       pinterest
       linkedIn
     }
-    markets: findMarkets(filter: { account: $account }) {
+  }
+`
+
+exports.getMarkets = gql`
+  query getMarketsFromGatsbyPlugin ($account: ID! $offset: Int! $limit: Int!) {
+    markets: findMarkets(filter: { account: $account } offset: $offset limit: $limit) {
       count
       items {
         id: publicId
@@ -64,8 +69,12 @@ module.exports = gql`
         }
       }
     }
+  }
+`
 
-    apartments: findApartments(filter: { account: $account status:published }) {
+exports.getApartments = gql`
+  query getApartmentsFromGatsbyPlugin ($account: ID! $offset: Int! $limit: Int!) {
+    apartments: findApartments(filter: { account: $account status:published } offset: $offset limit: $limit) {
       count
       items {
         id: publicId
@@ -123,8 +132,12 @@ module.exports = gql`
         }
       }
     }
+  }
+`
 
-    pages: findPages(filter: { account: $account status:published }) {
+exports.getPages = gql`
+  query getPagesFromGatsbyPlugin ($account: ID! $offset: Int! $limit: Int!) {
+    pages: findPages(filter: { account: $account status:published } offset: $offset limit: $limit) {
       count
       items {
         account {
@@ -171,7 +184,7 @@ module.exports = gql`
                 lat
                 lng
               }
-              apartments(filter: { status:published } sort: [["name", "1"]]) {
+              apartments(filter: { status:published }) {
                 count
               }
             }
