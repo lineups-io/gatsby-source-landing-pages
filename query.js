@@ -29,6 +29,10 @@ exports.getSiteInfo = gql`
         url
       }
       webfonts
+      logo {
+        url
+        svg
+      }
     }
   }
 `
