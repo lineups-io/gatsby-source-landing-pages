@@ -20,6 +20,15 @@ exports.getSiteInfo = gql`
       instagram
       pinterest
       linkedIn
+      fonts {
+        family
+        style
+        weight
+        display
+        format
+        url
+      }
+      webfonts
     }
   }
 `

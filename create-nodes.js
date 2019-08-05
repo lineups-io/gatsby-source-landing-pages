@@ -30,7 +30,27 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { uri, key, a
 
   return client.query({ query, variables }).then(({ data }) => {
     console.log(`${ pluginPrefix } creating site node`, 1)
-    createNode(SiteNode(data.site))
+    const siteNode = SiteNode(data.site)
+
+    const fonts = data.site.fonts.map(font => `
+      @font-face {
+          family: '${ font.family }';
+          style: ${ font.style };
+          weight: ${ font.weight };
+          display: ${ font.display };
+          src: url('${ font.url }') format('${ font.format }');
+      }
+    `).join('')
+
+    const createSiteNode = createFileNodeFromBuffer({
+          buffer: Buffer.from(fonts),
+          store,
+          cache,
+          createNode,
+          createNodeId,
+          name: 'fonts',
+          ext: '.css',
+    }).then(() => createNode(siteNode))
 
     return ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer'].reduce(
       (acc, name) => acc.then(() => {
