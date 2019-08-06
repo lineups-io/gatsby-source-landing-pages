@@ -12,8 +12,6 @@ const forEach = (helpers, plugin, fn) => {
   })
 }
 
-exports.Types = require('./nodes').Types
-
 exports.sourceNodes = (helpers, plugin) => {
   return createSiteNode(helpers, plugin)
     .then(() => forEach(helpers, plugin, createApartmentNodes))
