@@ -5,13 +5,19 @@ const {
   generateTypeName,
 } = createNodeHelpers({ typePrefix: 'Lineups' })
 
-exports.ApartmentType = 'Apartment'
-exports.ImageType = 'Image'
-exports.MarketType = 'Market'
-exports.PageType = 'Page'
-exports.SiteType = 'Site'
+const ApartmentType = 'Apartment'
+const ImageType = 'Image'
+const MarketType = 'Market'
+const PageType = 'Page'
+const SiteType = 'Site'
 
-exports.generateTypeName = generateTypeName
+exports.Types = {
+  Apartment: generateTypeName(ApartmentType),
+  Image: generateTypeName(ImageType),
+  Market: generateTypeName(MarketType),
+  Page: generateTypeName(PageType),
+  Site: generateTypeName(SiteType),
+}
 
 exports.ApartmentNode = createNodeFactory(ApartmentType)
 exports.ImageNode = createNodeFactory(ImageType)
