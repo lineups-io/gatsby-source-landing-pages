@@ -6,8 +6,9 @@ const {
 
 const forEach = (helpers, plugin, fn) => {
   return fn(helpers, plugin).then(({ next }) => {
-    if (next)
+    if (next) {
       return forEach(helpers, { ...plugin, offset: next }, fn)
+    }
   })
 }
 
