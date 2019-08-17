@@ -71,6 +71,7 @@ exports.createApartmentNodes = (
           createNodeId,
           createNode,
         }).then(fileNode => {
+          console.log(`${ pluginPrefix } create remote file node`, fileNode.url)
           apartmentNode.defaultPhoto.localFile___NODE = fileNode.id
           return createNode(apartmentNode)
         }).catch(e => {
