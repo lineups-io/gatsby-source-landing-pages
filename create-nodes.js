@@ -5,14 +5,12 @@ const {
 
 const {
   ApartmentNode,
-  MarketNode,
   PageNode,
   SiteNode,
 } = require('./nodes')
 
 const {
   getSiteInfo,
-  getMarkets,
   getApartments,
   getPages,
 } = require('./query')
@@ -46,32 +44,6 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { uri, key, a
         })
         : Promise.resolve()
     }), Promise.resolve())
-  })
-}
-
-exports.createMarketNodes = (
-  { actions, store, cache, createNodeId },
-  { uri, key, account, offset = 0, limit = 25 }
-) => {
-  const { createNode, createNodeField } = actions
-
-  const client = connect(uri, key)
-  const query = getMarkets
-  const variables = { account, offset, limit }
-
-  return client.query({ query, variables }).then(({ data }) => {
-    const { markets: { items, count } } = data
-    const end = offset + items.length - 1
-    console.log(`${pluginPrefix} creating market nodes ${ offset }-${ end } (out of ${ count })`)
-    return items.reduce(
-      (acc, market) => acc.then(() => {
-        const marketNode = MarketNode(market)
-        marketNode.apartments___NODE =
-          market.apartments.items.map(a => ApartmentNode(a).id)
-        return createNode(marketNode)
-      }),
-      Promise.resolve()
-    ).then(() => ({ next: end + 1 < count ? end + 1 : 0 }))
   })
 }
 

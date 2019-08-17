@@ -28,54 +28,6 @@ exports.getSiteInfo = gql`
   }
 `
 
-exports.getMarkets = gql`
-  query getMarketsFromGatsbyPlugin ($account: ID! $offset: Int! $limit: Int!) {
-    markets: findMarkets(filter: { account: $account } offset: $offset limit: $limit) {
-      count
-      items {
-        id: publicId
-        market
-        submarket
-        state {
-          abbreviation: publicId
-          name
-        }
-
-        apartments(filter: { status: published }) {
-          count
-          items {
-            id: publicId
-          }
-        }
-
-        marketPage {
-          title
-          shortTitle
-          slug
-          searchQueryParams
-        }
-
-        nonMarketPages {
-          title
-          shortTitle
-          slug
-        }
-
-        submarkets {
-          submarket
-
-          marketPage {
-            id: publicId
-            title
-            shortTitle
-            slug
-          }
-        }
-      }
-    }
-  }
-`
-
 exports.getApartments = gql`
   query getApartmentsFromGatsbyPlugin ($account: ID! $offset: Int! $limit: Int!) {
     apartments: findApartments(filter: { account: $account status:published } offset: $offset limit: $limit) {

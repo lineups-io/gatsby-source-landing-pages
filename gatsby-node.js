@@ -1,7 +1,6 @@
 const {
   createSiteNode,
   createApartmentNodes,
-  createMarketNodes,
   createPageNodes,
 } = require('./create-nodes')
 
@@ -15,7 +14,6 @@ const forEach = (helpers, plugin, fn) => {
 exports.sourceNodes = (helpers, plugin) => {
   return createSiteNode(helpers, plugin)
     .then(() => forEach(helpers, plugin, createApartmentNodes))
-    .then(() => forEach(helpers, plugin, createMarketNodes))
     .then(() => forEach(helpers, plugin, createPageNodes))
 }
 
