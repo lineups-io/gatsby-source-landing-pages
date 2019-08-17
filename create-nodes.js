@@ -20,7 +20,7 @@ const connect = require('./client')
 const pluginPrefix = '[gatsby-source-landing-pages]'
 
 exports.createSiteNode = ({ actions, store, cache, createNodeId }, { uri, key, account }) => {
-  const { createNode, createNodeField } = actions
+  const { createNode } = actions
 
   const client = connect(uri, key)
   const query = getSiteInfo
@@ -51,7 +51,7 @@ exports.createApartmentNodes = (
   { actions, store, cache, createNodeId },
   { uri, key, account, offset = 0, limit = 25 }
 ) => {
-  const { createNode, createNodeField } = actions
+  const { createNode } = actions
 
   const client = connect(uri, key)
   const query = getApartments
@@ -87,7 +87,7 @@ exports.createPageNodes = (
   { actions, store, cache, createNodeId },
   { uri, key, account, offset = 0, limit = 25 }
 ) => {
-  const { createNode, createNodeField } = actions
+  const { createNode } = actions
 
   const client = connect(uri, key)
   const query = getPages
