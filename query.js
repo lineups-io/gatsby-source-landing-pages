@@ -34,57 +34,8 @@ exports.getApartments = gql`
       count
       items {
         id: publicId
-        adLabel
-        spotlight
-        name
-        marketingWebsiteUrl
-        prospectPhoneNumber
-        address {
-          line1
-          city
-          state
-          postalCode
-        }
-        coordinates {
-          lat
-          lng
-        }
-        termGroups {
-          name
-          icon
-        }
         defaultPhoto {
-          id: publicId
           url
-          alt
-          title
-        }
-        markets {
-          state {
-             name
-          }
-          market
-          submarket
-        }
-        floorPlans {
-          id
-          name
-          marketRent {
-            min
-          }
-          bedrooms
-          bathrooms
-          availability {
-            unitId: UnitID
-            unitRent: UnitRent
-            unitDisplayRank: UnitDisplayRank
-            unitDisplayStatus: UnitDisplayStatus
-            dateAvailable: DateAvailable
-            unitAmenityList: UnitAmenityList
-            floorplan: FloorplanName
-            bedrooms: UnitBedrooms
-            marketRent: MarketRent
-          }
         }
       }
     }
@@ -96,76 +47,9 @@ exports.getPages = gql`
     pages: findPages(filter: { account: $account status:published } offset: $offset limit: $limit) {
       count
       items {
-        account {
-          name
-          title
-        }
-        breadcrumb {
-          market {
-            title: market
-            state {
-              name
-            }
-            marketPage {
-              slug
-              searchQueryParams
-            }
-            nonMarketPages {
-              title
-              shortTitle
-              slug
-            }
-          }
-          submarket {
-            title: submarket
-            state {
-              name
-            }
-            marketPage {
-              slug
-              searchQueryParams
-            }
-            nonMarketPages {
-              title
-              shortTitle
-              slug
-            }
-          }
-          submarkets {
-            title: submarket
-            marketPage {
-              title
-              slug
-              center:coordinates {
-                lat
-                lng
-              }
-              apartments(filter: { status:published }) {
-                count
-              }
-            }
-          }
-        }
         id: publicId
         slug
         noindex
-        h1
-        copy
-        title
-        shortTitle
-        termGroup {
-          category
-          name
-        }
-        mapZoom
-        coordinates {
-          lat
-          lng
-        }
-        hideSubmarkets
-        market {
-          id: publicId
-        }
         apartments(filter: { status:published }) {
           count
           items {
