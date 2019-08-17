@@ -33,17 +33,17 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { uri, key, a
     return ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer'].reduce(
       (acc, name) => acc.then(() => {
         data.site[name]
-        ? createFileNodeFromBuffer({
-          buffer: Buffer.from(data.site[name]),
-          store,
-          cache,
-          createNode,
-          createNodeId,
-          name,
-          ext: '.md',
-        })
-        : Promise.resolve()
-    }), Promise.resolve())
+          ? createFileNodeFromBuffer({
+            buffer: Buffer.from(data.site[name]),
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            name,
+            ext: '.md',
+          })
+          : Promise.resolve()
+      }), Promise.resolve())
   })
 }
 
@@ -60,7 +60,7 @@ exports.createApartmentNodes = (
   return client.query({ query, variables }).then(({ data }) => {
     const { apartments: { items, count } } = data
     const end = offset + items.length - 1
-    console.log(`${pluginPrefix} creating apartment nodes ${ offset }-${ end } (out of ${ count })`)
+    console.log(`${ pluginPrefix } creating apartment nodes ${ offset }-${ end } (out of ${ count })`)
     return items.reduce(
       (acc, apartment) => acc.then(() => {
         const apartmentNode = ApartmentNode(apartment)
@@ -96,7 +96,7 @@ exports.createPageNodes = (
   return client.query({ query, variables }).then(({ data }) => {
     const { pages: { items, count } } = data
     const end = offset + items.length - 1
-    console.log(`${pluginPrefix} creating page nodes ${ offset }-${ end } (out of ${ count })`)
+    console.log(`${ pluginPrefix } creating page nodes ${ offset }-${ end } (out of ${ count })`)
     return items.reduce(
       (acc, page) => acc.then(() => {
         const pageNode = PageNode(page)
