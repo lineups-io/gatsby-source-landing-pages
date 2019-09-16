@@ -17,11 +17,3 @@ exports.sourceNodes = (helpers, plugin) => {
     .then(() => forEach(helpers, plugin, createApartmentNodes))
     .then(() => forEach(helpers, plugin, createPageNodes))
 }
-
-exports.onCreateNode = ({ node, actions }) => {
-  if (node.internal.type === 'MarkdownRemark') {
-    const { createNodeField } = actions
-    createNodeField({ node, name: 'template', value: node.frontmatter.template })
-    createNodeField({ node, name: 'slug', value: node.frontmatter.path })
-  }
-}
