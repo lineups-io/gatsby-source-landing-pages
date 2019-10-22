@@ -59,8 +59,8 @@ exports.createApartmentNodes = (
 
   return client.query({ query, variables }).then(({ data }) => {
     const { apartments: { items, count } } = data
-    const end = offset + items.length - 1
-    console.log(`${ pluginPrefix } creating apartment nodes ${ offset }-${ end } (out of ${ count })`)
+    const end = offset + items.length
+    console.log(`${ pluginPrefix } creating apartment nodes ${ offset + 1 }-${ end } (out of ${ count })`)
     return items.reduce(
       (acc, apartment) => acc.then(() => {
         const apartmentNode = ApartmentNode(apartment)
@@ -80,7 +80,7 @@ exports.createApartmentNodes = (
         })
       }),
       Promise.resolve()
-    ).then(() => ({ next: end + 1 < count ? end + 1 : 0 }))
+    ).then(() => ({ next: end < count ? end : 0 }))
   })
 }
 
@@ -96,8 +96,8 @@ exports.createPageNodes = (
 
   return client.query({ query, variables }).then(({ data }) => {
     const { pages: { items, count } } = data
-    const end = offset + items.length - 1
-    console.log(`${ pluginPrefix } creating page nodes ${ offset }-${ end } (out of ${ count })`)
+    const end = offset + items.length
+    console.log(`${ pluginPrefix } creating page nodes ${ offset + 1 }-${ end } (out of ${ count })`)
     return items.reduce(
       (acc, page) => acc.then(() => {
         const pageNode = PageNode(page)
@@ -105,6 +105,6 @@ exports.createPageNodes = (
         return createNode(pageNode)
       }),
       Promise.resolve()
-    ).then(() => ({ next: end + 1 < count ? end + 1 : 0 }))
+    ).then(() => ({ next: end < count ? end : 0 }))
   })
 }
