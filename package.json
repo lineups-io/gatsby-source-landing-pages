@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-landing-pages",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "gatsby-node.js",
   "author": "lablancas@gmail.com",
   "license": "MIT",

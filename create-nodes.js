@@ -100,9 +100,13 @@ exports.createPageNodes = (
     console.log(`${ pluginPrefix } creating page nodes ${ offset + 1 }-${ end } (out of ${ count })`)
     return items.reduce(
       (acc, page) => acc.then(() => {
-        const pageNode = PageNode(page)
-        pageNode.apartments___NODE = page.apartments.items.map(a => ApartmentNode(a).id)
-        return createNode(pageNode)
+        if (page.apartments.count > 0) {
+          const pageNode = PageNode(page)
+          pageNode.apartments___NODE = page.apartments.items.map(a => ApartmentNode(a).id)
+          return createNode(pageNode)
+        } else {
+          return Promise.resolve()
+        }
       }),
       Promise.resolve()
     ).then(() => ({ next: end < count ? end : 0 }))
