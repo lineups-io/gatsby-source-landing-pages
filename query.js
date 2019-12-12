@@ -15,6 +15,7 @@ exports.getSiteInfo = gql`
       privacyPolicy
       termsOfUse
       websiteDisclaimer
+      cookiePolicy
       facebook
       twitter
       instagram

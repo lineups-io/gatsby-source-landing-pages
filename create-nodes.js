@@ -30,7 +30,7 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { uri, key, a
     console.log(`${ pluginPrefix } creating site node`, 1)
     createNode(SiteNode(data.site))
 
-    return ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer'].reduce(
+    return ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer', 'cookiePolicy'].reduce(
       (acc, name) => acc.then(() => {
         data.site[name]
           ? createFileNodeFromBuffer({
