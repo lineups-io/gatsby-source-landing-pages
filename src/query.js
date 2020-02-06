@@ -1,6 +1,6 @@
-const gql = require('graphql-tag')
+import gql from 'graphql-tag'
 
-exports.getSiteInfo = gql`
+export const getSiteInfo = gql`
   query getSiteInfoFromGatsbyPlugin ($account: ID!) {
     site: getAccountById(id: $account) {
       id: publicId
@@ -29,7 +29,7 @@ exports.getSiteInfo = gql`
   }
 `
 
-exports.getApartments = gql`
+export const getApartments = gql`
   query getApartmentsFromGatsbyPlugin ($account: ID! $offset: Int! $limit: Int!) {
     apartments: findApartments(filter: { account: $account status:published } offset: $offset limit: $limit) {
       count
@@ -43,7 +43,7 @@ exports.getApartments = gql`
   }
 `
 
-exports.getPages = gql`
+export const getPages = gql`
   query getPagesFromGatsbyPlugin ($account: ID! $offset: Int! $limit: Int!) {
     pages: findPages(filter: { account: $account status:published } offset: $offset limit: $limit) {
       count
