@@ -1,27 +1,31 @@
 const { ApolloClient } = require('apollo-client')
 const { createHttpLink } = require('apollo-link-http')
-const { setContext } = require('apollo-link-context')
 const { InMemoryCache } = require('apollo-cache-inmemory')
-const fetch = require('node-fetch')
+const nodeFetch = require('node-fetch')
 
-module.exports = (uri, key) => {
+module.exports = async options => {
+  const {
+    url,
+    headers = {},
+    fetch = nodeFetch,
+    fetchOptions = {},
+    createLink,
+  } = options
 
-  const httpLink = createHttpLink({
-    uri,
-    fetch,
-  })
-
-  const authLink = setContext((_, { headers }) => {
-    return {
-      headers: {
-        ...headers,
-        Authorization: 'Bearer ' + key,
-      }
-    }
-  })
+  let link
+  if (createLink) {
+    link = await createLink(options)
+  } else {
+    link = createHttpLink({
+      uri: url,
+      fetch,
+      fetchOptions,
+      headers: typeof headers === 'function' ? await headers() : headers,
+    })
+  }
 
   return new ApolloClient({
-    link: authLink.concat(httpLink),
+    link,
     cache: new InMemoryCache()
   })
 }
