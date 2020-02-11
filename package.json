@@ -13,6 +13,7 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "gatsby": "^2.19.15",
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "babel-preset-gatsby-package": "^0.2.16",
@@ -23,7 +24,7 @@
     "gatsby-plugin"
   ],
   "peerDependencies": {
-    "gatsby": "^2.0.15"
+    "gatsby": "^2.19.15"
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
