@@ -13,11 +13,11 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "gatsby": "^2.19.15",
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "babel-preset-gatsby-package": "^0.2.16",
-    "cross-env": "^5.2.1"
+    "cross-env": "^5.2.1",
+    "gatsby": "^2.19.15"
   },
   "keywords": [
     "gatsby",
