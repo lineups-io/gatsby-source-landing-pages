@@ -35,6 +35,9 @@ export const getApartments = gql`
       count
       items {
         id: publicId
+        name
+        enabledFeatures
+        marketingWebsiteUrl
         defaultPhoto {
           url
         }
