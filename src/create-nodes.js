@@ -32,7 +32,7 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
 
     return ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer', 'cookiePolicy'].reduce(
       (acc, name) => acc.then(() => {
-        data.site[name]
+        return data.site[name]
           ? createFileNodeFromBuffer({
             buffer: Buffer.from(data.site[name]),
             store,
