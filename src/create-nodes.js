@@ -39,7 +39,7 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
       })
     })
 
-    const q = markdown.reduce((acc, md) => acc.then(() => {
+    return markdown.reduce((acc, md) => acc.then(() => {
       return createFileNodeFromBuffer({
         buffer: Buffer.from(`---\ntitle: ${ md.title }\npath: ${ md.href }\n---\n${ md.markdown }`),
         store,
@@ -50,21 +50,6 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
         ext: '.md',
       })
     }), Promise.resolve())
-
-    return ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer', 'cookiePolicy'].reduce(
-      (acc, name) => acc.then(() => {
-        return data.site[name]
-          ? createFileNodeFromBuffer({
-            buffer: Buffer.from(data.site[name]),
-            store,
-            cache,
-            createNode,
-            createNodeId,
-            name,
-            ext: '.md',
-          })
-          : Promise.resolve()
-      }), q)
   })
 }
 

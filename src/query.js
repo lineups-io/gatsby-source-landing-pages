@@ -6,21 +6,10 @@ export const getSiteInfo = gql`
       id: publicId
       name
       title
-      legalName
       menu {
         title
         href
       }
-      icons
-      privacyPolicy
-      termsOfUse
-      websiteDisclaimer
-      cookiePolicy
-      facebook
-      twitter
-      instagram
-      pinterest
-      linkedIn
       webfonts
       logo {
         url
