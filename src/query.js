@@ -25,6 +25,24 @@ export const getSiteInfo = gql`
       logo {
         url
       }
+      footer {
+        copyrightOwner
+        icons
+        social {
+          icon
+          href
+          fontAwesome
+        }
+        menu {
+          title
+          href
+          subMenu {
+            title
+            href
+            markdown
+          }
+        }
+      }
     }
   }
 `

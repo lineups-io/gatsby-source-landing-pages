@@ -30,6 +30,27 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
     console.log(`${ pluginPrefix } creating site node`, 1)
     createNode(SiteNode(data.site))
 
+    const markdown = []
+    data.site.footer.menu.forEach(menu => {
+      menu.subMenu.forEach(subMenu => {
+        if (subMenu.markdown) {
+          markdown.push(subMenu)
+        }
+      })
+    })
+
+    const q = markdown.reduce((acc, md) => acc.then(() => {
+      return createFileNodeFromBuffer({
+        buffer: Buffer.from(`---\ntitle: ${ md.title }\npath: ${ md.href }\n---\n${ md.markdown }`),
+        store,
+        cache,
+        createNode,
+        createNodeId,
+        name: md.title,
+        ext: '.md',
+      })
+    }), Promise.resolve())
+
     return ['privacyPolicy', 'termsOfUse', 'websiteDisclaimer', 'cookiePolicy'].reduce(
       (acc, name) => acc.then(() => {
         return data.site[name]
@@ -43,7 +64,7 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
             ext: '.md',
           })
           : Promise.resolve()
-      }), Promise.resolve())
+      }), q)
   })
 }
 
