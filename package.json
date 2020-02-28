@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-landing-pages",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": "lablancas@gmail.com",
   "license": "MIT",
   "dependencies": {
