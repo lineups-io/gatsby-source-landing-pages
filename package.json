@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/lineups-io/gatsby-source-landing-pages.git"
   },
+  "bugs": {
+    "url": "https://github.com/lineups-io/gatsby-source-landing-pages/issues"
+  },
   "homepage": "https://github.com/lineups-io/gatsby-source-landing-pages#readme",
   "dependencies": {
     "apollo-cache-inmemory": "^1.6.2",
