@@ -70,20 +70,7 @@ exports.createApartmentNodes = (
     return items.reduce(
       (acc, apartment) => acc.then(() => {
         const apartmentNode = ApartmentNode(apartment)
-        return createRemoteFileNode({
-          url: encodeURI(apartment.defaultPhoto.url),
-          store,
-          cache,
-          createNodeId,
-          createNode,
-        }).then(fileNode => {
-          console.log(`${ pluginPrefix } create remote file node`, fileNode.url)
-          apartmentNode.defaultPhoto.localFile___NODE = fileNode.id
-          return createNode(apartmentNode)
-        }).catch(e => {
-          console.error(`${ pluginPrefix } create remote file node`, e)
-          return createNode(apartmentNode)
-        })
+        return createNode(apartmentNode)
       }),
       Promise.resolve()
     ).then(() => ({ next: end < count ? end : 0 }))
