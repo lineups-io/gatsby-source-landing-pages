@@ -12,24 +12,18 @@
   },
   "homepage": "https://github.com/lineups-io/gatsby-source-landing-pages#readme",
   "dependencies": {
-    "apollo-cache-inmemory": "^1.6.2",
-    "apollo-client": "^2.6.3",
-    "apollo-link-http": "^1.5.15",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
     "gatsby-node-helpers": "^0.3.0",
-    "gatsby-source-filesystem": "^2.1.33",
-    "graphql-tag": "^2.10.1",
+    "gatsby-source-filesystem": "^2.3.8",
+    "graphql-tag": "^2.10.3",
     "node-fetch": "^2.6.0"
-  },
-  "devDependencies": {
-    "gatsby": "^2.19.15"
   },
   "keywords": [
     "gatsby",
     "gatsby-plugin"
   ],
-  "peerDependencies": {
-    "gatsby": "^2.19.15"
-  },
   "scripts": {},
   "engines": {
     "node": ">=8.0.0"
