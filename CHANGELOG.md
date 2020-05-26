@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/lineups-io/gatsby-source-landing-pages/compare/v2.0.0...v2.0.1) (2020-05-26)
+
+
+### Bug Fixes
+
+* 🐛 upgrade babel-preset-gatsby-package ([e920f2c](https://github.com/lineups-io/gatsby-source-landing-pages/commit/e920f2cab9b3b5eb224afc92d1feef9351f307d9))
+
 ## [2.0.0](https://github.com/lineups-io/gatsby-source-landing-pages/compare/v1.0.0...v2.0.0) (2020-03-04)
 
 
