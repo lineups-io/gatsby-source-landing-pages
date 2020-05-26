@@ -21,10 +21,6 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "babel-preset-gatsby-package": "^0.4.2",
-    "cross-env": "^5.2.1",
     "gatsby": "^2.19.15"
   },
   "keywords": [
@@ -34,11 +30,7 @@
   "peerDependencies": {
     "gatsby": "^2.19.15"
   },
-  "scripts": {
-    "build": "babel src --out-dir . --ignore **/__tests__",
-    "prepare": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir . --ignore **/__tests__"
-  },
+  "scripts": {},
   "engines": {
     "node": ">=8.0.0"
   }
