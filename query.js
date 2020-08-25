@@ -45,6 +45,11 @@ exports.getApartments = gql`
         name
         enabledFeatures
         marketingWebsiteUrl
+        floorPlanUrl
+        realPage {
+          siteId
+          wid
+        }
         defaultPhoto {
           url
         }
