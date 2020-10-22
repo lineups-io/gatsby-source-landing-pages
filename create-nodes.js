@@ -27,8 +27,6 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
   const variables = { account }
 
   return client.query({ query, variables }).then(({ data }) => {
-    console.log(`${ pluginPrefix } creating site node`, 1)
-    createNode(SiteNode(data.site))
 
     const markdown = []
     data.site.footer.menu.forEach(menu => {
