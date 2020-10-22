@@ -37,6 +37,7 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
       })
     })
 
+    console.log(`${ pluginPrefix } creating markdown file node`, markdown.length)
     return markdown.reduce((acc, md) => acc.then(() => {
       return createFileNodeFromBuffer({
         buffer: Buffer.from(`---\ntitle: ${ md.title }\npath: ${ md.href }\n---\n${ md.markdown }`),
