@@ -1,13 +1,8 @@
+const { createNodeHelpers } = require('gatsby-node-helpers')
 const {
   createRemoteFileNode,
   createFileNodeFromBuffer,
 } = require('gatsby-source-filesystem')
-
-const {
-  ApartmentNode,
-  PageNode,
-  SiteNode,
-} = require('./nodes')
 
 const {
   getSiteInfo,
@@ -53,9 +48,11 @@ exports.createSiteNode = ({ actions, store, cache, createNodeId }, { account, ..
 }
 
 exports.createApartmentNodes = (
-  { actions, store, cache, createNodeId },
+  { actions, store, cache, createNodeId, createContentDigest },
   { account, offset = 0, limit = 25, ...options }
 ) => {
+  const { createNodeFactory } = createNodeHelpers({ typePrefix: 'Lineups', createNodeId, createContentDigest })
+  const ApartmentNode = createNodeFactory('Apartment')
   const { createNode } = actions
 
   const client = connect(options)
@@ -77,9 +74,11 @@ exports.createApartmentNodes = (
 }
 
 exports.createPageNodes = (
-  { actions, store, cache, createNodeId },
+  { actions, store, cache, createNodeId, createContentDigest },
   { account, offset = 0, limit = 25, ...options }
 ) => {
+  const { createNodeFactory } = createNodeHelpers({ typePrefix: 'Lineups', createNodeId, createContentDigest })
+  const PageNode = createNodeFactory('Page')
   const { createNode } = actions
 
   const client = connect(options)
