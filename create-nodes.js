@@ -1,6 +1,5 @@
 const { createNodeHelpers } = require('gatsby-node-helpers')
 const {
-  createRemoteFileNode,
   createFileNodeFromBuffer,
 } = require('gatsby-source-filesystem')
 
