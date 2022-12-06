@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/lineups-io/gatsby-source-landing-pages/compare/v3.0.0...v4.0.0) (2022-12-06)
+
+
+### Features
+
+* 🎸 upgrade gatsby source plugin to be ready for gatsby v5 ([8e2dd85](https://github.com/lineups-io/gatsby-source-landing-pages/commit/8e2dd8562670414d464f68411ef932b8ebf3a85d))
+
 ## [3.0.0](https://github.com/lineups-io/gatsby-source-landing-pages/compare/v2.2.0...v3.0.0) (2022-11-04)
 
 
