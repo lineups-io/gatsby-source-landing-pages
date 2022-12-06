@@ -16,7 +16,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "gatsby-node-helpers": "^1.2.1",
-    "gatsby-source-filesystem": "^4.0.0",
+    "gatsby-source-filesystem": "^5.0.0",
     "graphql-tag": "^2.11.0",
     "node-fetch": "^2.6.1"
   },
